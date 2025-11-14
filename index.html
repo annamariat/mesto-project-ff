@@ -66,22 +66,19 @@
 <script src="./scripts/cards.js"></script>
 <script src="./scripts/index.js" defer></script>
 
+<template id="card-template">
+  <li class="places__item card">
+    <img class="card__image" src="" alt="" />
+    <button type="button" class="card__delete-button"></button>
+    <div class="card__description">
+      <h2 class="card__title">
+      </h2>
+      <button type="button" class="card__like-button"></button>
+    </div>
+  </li>
+</template>
 
-
-  <template id="place-template">
-      <article class="grid-element">
-        <h2 class="grid-element__title"></h2>
-        <img class="grid-element__image" alt="фотография церкви" />
-        <div class="grid-element__description">
-          <button class="grid-element__trash" type="button">
-            trash
-          </button>
-          <button class="grid-element__emoji" type="button" aria-label="like">
-            like
-          </button>
-        </div>
-      </article>
-    </template>
+  
 
 </body>
 </html>

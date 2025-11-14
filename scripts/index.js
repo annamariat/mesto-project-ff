@@ -1,41 +1,48 @@
 // @todo: Темплейт карточки
-const cardTemplate = document.querySelector("#card-template").content;
+
 
 // @todo: DOM узлы
-const placesList = document.querySelector(".places_list");
-const deleteIcon = cardElement.querySelector(".card__delete-icon");
 
 // @todo: Функция создания карточки
+
+// @todo: Функция удаления карточки
+
+// @todo: Вывести карточки на страницу
+
+
 function createCardElement(cardData, deleteCallback) {
-  const cardTemplate = document.querySelector("#card-template").content;
-  const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
+  // Клонируем шаблон карточки
+  const cardTemplate = document.querySelector('#card-template').content;
+  const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
 
-  cardElement.querySelector(".card__title").textContent = cardData.title;
-  cardElement.querySelector(".card__description").textContent =
-    cardData.description;
-  cardElement.querySelector(".card__image").src = cardData.imageUrl;
+  // Устанавливаем значения вложенных элементов
+  cardElement.querySelector('.card__image').src = cardData.imageUrl;
+  cardElement.querySelector('.card__title').textContent = cardData.title;
 
-  const deleteIcon = cardElement.querySelector(".card__delete-icon");
-  deleteIcon.addEventListener("click", deleteCallback);
+  // Добавляем обработчик клика к иконке удаления
+  const deleteButton = cardElement.querySelector('.card__delete-button');
+  deleteButton.addEventListener('click', () => deleteCallback(cardElement));
 
   return cardElement;
 }
 
-// @todo: Функция удаления карточки
+// Пример использования функции для вывода карточек из массива на страницу
+const placesList = document.querySelector('.places__list');
+const cardsData = [
+  { imageUrl: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg', title: 'Архыз' },
+  { imageUrl: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg', title: 'Челябинская область' },
+  { imageUrl: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg', title: 'Иваново' },
+  { imageUrl: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg', title: 'Камчатка' },
+  { imageUrl: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg', title: 'Холмогорский район' },
+  { imageUrl: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg', title: 'Байкал' },
 
-function deleteCard(cardElement) {
-  cardElement.remove();
-}
+];
 
-initialCards.forEach((cardData) => {
-  const cardElement = createCardElement(cardData, deleteCard);
-  placesList.append(cardElement);
+cardsData.forEach(cardData => {
+  const cardElement = createCardElement(cardData, card => {
+    // Колбэк для удаления карточки
+    placesList.removeChild(card);
+  });
+  placesList.appendChild(cardElement);
 });
 
-// @todo: Вывести карточки на страницу
-
-initialCards.forEach((cardData) => {
-  const cardElement = createCardElement(cardData, deleteCallback);
-
-  placesList.append(cardElement);
-});
