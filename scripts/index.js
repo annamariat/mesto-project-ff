@@ -4,10 +4,10 @@ function createCardElement(cardData, deleteCallback) {
   const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
 
   // Устанавливаем значения вложенных элементов
-  cardElement.querySelector(".card__image").src = cardData.imageUrl;
-  cardElement
-    .querySelector(".card__image")
-    .setAttribute("alt", cardData.altText);
+  const image = cardElement.querySelector(".card__image");
+  image.src = cardData.imageUrl;
+  image.alt = cardData.title;
+
   cardElement.querySelector(".card__title").textContent = cardData.title;
 
   // Добавляем обработчик клика к иконке удаления
