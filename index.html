@@ -18,13 +18,14 @@
       <div class="profile__image" style="background-image: url('./images/avatar.jpg');"></div>
       <div class="profile__info">
         <h1 class="profile__title">Жак-Ив Кусто</h1>
-        <button class="profile__edit-button" type="button"></button>
+        <button class="profile__edit-button" data-popup="edit" type="button"></button>
         <p class="profile__description">Исследователь океана</p>
       </div>
-      <button class="profile__add-button" type="button"></button>
+      <button class="profile__add-button" data-popup="new-card" type="button"></button>
     </section>
     <section class="places page__section">
-      <ul class="places__list">
+      <ul class="places__list" data-popup="type_image">
+        
       </ul>
     </section>
   </main>
@@ -51,7 +52,7 @@
       <form class="popup__form" name="new-place">
         <input type="text" name="place-name" class="popup__input popup__input_type_card-name" placeholder="Название" required>
         <input type="url" name="link" class="popup__input popup__input_type_url" placeholder="Ссылка на картинку" required>
-        <button type="submit" class="button popup__button">Сохранить</button>
+        <button type="submit"  class="button popup__button" >Сохранить</button>
       </form>
     </div>
   </div>

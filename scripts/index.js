@@ -61,9 +61,19 @@ cardsData.forEach((cardData) => {
   placesList.appendChild(cardElement);
 });
 
- // Функция для открытия модального окна
-function openModal() {
-  document.querySelector('.popup').style.display = 'block';
+ 
+
+
+const buttons = document.querySelectorAll('.profile__edit-button, .profile__add-button');
+buttons.forEach(button => {
+  button.addEventListener('click', openModal);
+});
+
+
+function openModal(event) {
+  const targetPopup = event.target.dataset.popup; // Получаем идентификатор popup из атрибута data-popup кнопки
+  const popup = document.querySelector(`.popup_type_${targetPopup}`);
+  popup.style.display = 'block';
 }
 
 // Функция для закрытия модального окна
@@ -72,11 +82,10 @@ function closeModal() {
 }
 
 
-// Привязываем событие к кнопке открытия модального окна
-document.querySelector('.profile__edit-button').addEventListener('click', openModal);
-
 // Привязываем событие к крестику для закрытия модального окна
 document.querySelector('.popup__close').addEventListener('click', closeModal);
+
+
 
 
 
