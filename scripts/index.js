@@ -89,3 +89,29 @@ document.querySelector('.popup__close').addEventListener('click', closeModal);
 
 
 
+// Получаем все попапы
+const popups = document.querySelectorAll('.popup');
+
+// Проходим по каждому попапу и добавляем обработчик события 'click'
+popups.forEach(popup => {
+  popup.addEventListener('click', function(event) {
+    // Если клик был сделан по самому попапу (но не по его содержимому), закрываем попап
+    if (event.target === popup) {
+      popup.style.display = 'none';
+    }
+  });
+});
+
+
+//закрываем попапы с помощью клавиши Esc
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    const popups = document.querySelectorAll('.popup');
+    popups.forEach(popup => {
+      popup.style.display = 'none';
+    });
+  }
+});
+
+
+
